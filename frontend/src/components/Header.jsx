@@ -1,39 +1,62 @@
-export default function Header(){
+// src/components/Header.jsx
+export default function Header() {
   return (
-    <header className="site-header">
-      <div className="container header-row">
-        {/* Logo */}
-        <a href="/" className="logo" onClick={(e)=>e.preventDefault()}>
-          <span>Pet<span className="logo-accent">Shop</span></span>
-        </a>
+    <header style={{
+      background: "#fff",
+      borderBottom: "1px solid #e5e7eb",
+      position: "sticky",
+      top: 0,
+      zIndex: 20
+    }}>
+      <div style={{
+        maxWidth: 1100,
+        margin: "0 auto",
+        padding: "12px 16px",
+        display: "flex",
+        alignItems: "center",
+        gap: 16
+      }}>
+        <div style={{ fontWeight: 800, fontSize: 22 }}>
+          Pet<span style={{ color: "#1e40af" }}>Shop</span>
+        </div>
 
-        {/* Busca */}
-        <form className="search" onSubmit={(e)=>e.preventDefault()}>
-          <input placeholder="O que seu pet precisa?" />
-          <button type="submit">Buscar</button>
-        </form>
+        <div style={{ flex: 1 }}>
+          <input
+            aria-label="search"
+            placeholder="O que seu pet precisa?"
+            style={{
+              width: "100%",
+              height: 40,
+              borderRadius: 10,
+              border: "1px solid #e5e7eb",
+              padding: "8px 12px"
+            }}
+          />
+        </div>
 
-        {/* Ações */}
-        <nav className="header-actions">
-          <a href="#" onClick={(e)=>e.preventDefault()}>📞</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>❤️</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>🛒</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>Entrar</a>
+        <nav style={{ display: "flex", gap: 12, alignItems: "center" }}>
+          <button aria-label="telefone" style={{ height: 36, borderRadius: 8 }}>📞</button>
+          <button aria-label="favoritos" style={{ height: 36, borderRadius: 8 }}>❤️</button>
+          <button aria-label="carrinho" style={{ height: 36, borderRadius: 8 }}>🛒</button>
+          <a href="/login" style={{ textDecoration: "none", fontWeight: 700 }}>Entrar</a>
         </nav>
       </div>
 
-      {/* Menu de categorias */}
-      <div className="header-nav">
-        <div className="container categories">
-          <a href="#" onClick={(e)=>e.preventDefault()}>Cachorro</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>Gato</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>Pássaro</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>Peixe</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>Outros Pets</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>Casa e Jardim</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>Promoções</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>Serviços</a>
-          <a href="#" onClick={(e)=>e.preventDefault()}>Assinatura</a>
+      {/* categorias simples */}
+      <div style={{ borderTop: "1px solid #e5e7eb", background: "#fff" }}>
+        <div style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+          padding: "8px 16px",
+          display: "flex",
+          gap: 18,
+          alignItems: "center",
+          height: 44
+        }}>
+          <a href="/categoria/cachorro" style={{ textDecoration: "none", fontWeight: 600 }}>Cachorro</a>
+          <a href="/categoria/gato" style={{ textDecoration: "none", fontWeight: 600 }}>Gato</a>
+          <a href="/promocoes" style={{ textDecoration: "none", fontWeight: 600 }}>Promoções</a>
+          <a href="/servicos" style={{ textDecoration: "none", fontWeight: 600 }}>Serviços</a>
         </div>
       </div>
     </header>

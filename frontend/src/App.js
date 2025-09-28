@@ -1,12 +1,12 @@
-import "./index.css";
+// src/App.js
 import Header from "./components/Header";
 import Home from "./pages/Home";
 
-export default function App(){
+export default function App() {
   return (
     <>
-      <Header/>
-      <Home/>
+      <Header />
+      <Home />
     </>
   );
 }

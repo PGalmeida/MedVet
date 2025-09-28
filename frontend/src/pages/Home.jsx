@@ -1,50 +1,55 @@
-import { CalendarDays, Scissors, ShowerHead, Syringe, Plus } from "lucide-react";
+// src/pages/Home.jsx
+import React, { useState, useEffect } from "react";
+import "./Home.css";
 
-export default function Home(){
+const images = [
+    "/carousel/slide1.jpg",
+  "/carousel/slide2.jpg",
+  "/carousel/slide3.jpg",
+];
+
+function Home() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 3000); // troca a cada 3 segundos
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="content">
-      {/* Banner de destaque */}
-      <section className="hero">
-        <div>
-          <div className="badge">Promo do dia</div>
-          <h2 style={{marginTop:6, fontWeight:800}}>
-            Banho & Tosa com <span style={{color:"#1d4ed8"}}>20% OFF</span> — hoje até 18h 🐾
-          </h2>
-          <p style={{color:"#6b7280", marginTop:4}}>Válido para agendamentos online realizados hoje.</p>
-        </div>
-        <a href="#" className="cta" onClick={(e)=>e.preventDefault()}>
-          <Plus size={18}/> Agendar agora
-        </a>
-      </section>
+    <div className="home-container">
+      <h1>PetShop Franca</h1>
+      <p>
+        Bem-vindo à PetShop — encontre serviços, produtos e promoções para seu
+        pet. Confira nossa loja física em Franca.
+      </p>
 
-      {/* Ações rápidas */}
-      <div className="actions">
-        <a href="#" className="btn" onClick={(e)=>e.preventDefault()}><CalendarDays size={16}/> Novo agendamento</a>
-        <a href="#" className="btn" onClick={(e)=>e.preventDefault()}><ShowerHead size={16}/> Banho</a>
-        <a href="#" className="btn" onClick={(e)=>e.preventDefault()}><Scissors size={16}/> Tosa</a>
-        <a href="#" className="btn" onClick={(e)=>e.preventDefault()}><Syringe size={16}/> Vacina</a>
+      {/* Carrossel */}
+      <div className="carousel">
+        <img src={images[current]} alt="Carrossel PetShop" />
+        <div className="indicators">
+          {images.map((_, index) => (
+            <span
+              key={index}
+              className={index === current ? "active" : ""}
+              onClick={() => setCurrent(index)}
+            ></span>
+          ))}
+        </div>
       </div>
 
-      {/* Cards de KPIs */}
-      <div className="cards">
-        <div className="card"><h3>Atendimentos hoje</h3><div className="num">6</div></div>
-        <div className="card"><h3>Pets cadastrados</h3><div className="num">128</div></div>
-        <div className="card"><h3>Clientes ativos</h3><div className="num">94</div></div>
-        <div className="card"><h3>Receita (mês)</h3><div className="num">R$ 12.340</div></div>
-      </div>
-
-      {/* Lista simples */}
-      <div className="card">
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-          <h3 style={{color:"#111827"}}>Próximos agendamentos</h3>
-          <a href="#" className="btn" onClick={(e)=>e.preventDefault()}><CalendarDays size={16}/> Ver agenda</a>
-        </div>
-        <ul className="clean" style={{marginTop:6}}>
-          <li><strong>10:00</strong> • Banho & Tosa — Mel (Shih-Tzu) • Maria S.</li>
-          <li><strong>11:30</strong> • Consulta — Thor (SRD) • João P.</li>
-          <li><strong>14:00</strong> • Vacina V10 — Nina (Labrador) • Carla M.</li>
-        </ul>
+      {/* Endereço */}
+      <div className="endereco">
+        <h3>Endereço</h3>
+        <p>Av. Dr. Ismael Alonso Y Alonso, 450 — Franca / SP</p>
+        <button onClick={() => window.open("https://maps.google.com")}>
+          Google Maps
+        </button>
       </div>
     </div>
   );
 }
+
+export default Home;
