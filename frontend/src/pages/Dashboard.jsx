@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Dashboard.css";
 
 export default function Dashboard() {
@@ -38,6 +38,55 @@ export default function Dashboard() {
   function irProntuario() { alert("Ir para: /prontuario"); }
   function emitirRecibo() { alert("Emitir recibo (exemplo)"); }
 
+  // ==========================
+  // 🔔 NOTIFICAÇÕES INTELIGENTES
+  // ==========================
+  const defaultNotifications = [
+    { id: "n1", titulo: "Vacina atrasada", texto: "Luna precisa da V3 (7 dias de atraso)", nivel: "alto", lido: false, acao: "Agendar vacina" },
+    { id: "n2", titulo: "Exame disponível", texto: "Resultado de hemograma do Toby foi anexado", nivel: "medio", lido: false, acao: "Abrir prontuário" },
+    { id: "n3", titulo: "Pagamento pendente", texto: "Consulta Nina — boleto não compensado", nivel: "medio", lido: false, acao: "Enviar lembrete" },
+    { id: "n4", titulo: "Baixo estoque", texto: "Soro fisiológico 0.9% abaixo do mínimo", nivel: "baixo", lido: true,  acao: "Repor estoque" },
+  ];
+
+  const [notifications, setNotifications] = useState(() => {
+    const saved = localStorage.getItem("medvet.notifications");
+    return saved ? JSON.parse(saved) : defaultNotifications;
+  });
+  const [notifOpen, setNotifOpen] = useState(false);
+
+  // persistência
+  useEffect(() => {
+    localStorage.setItem("medvet.notifications", JSON.stringify(notifications));
+  }, [notifications]);
+
+  const unreadCount = notifications.filter(n => !n.lido).length;
+
+  function togglePanel() { setNotifOpen(v => !v); }
+  function closePanel() { setNotifOpen(false); }
+
+  function marcarComoLida(id) {
+    setNotifications(prev => prev.map(n => n.id === id ? { ...n, lido: true } : n));
+  }
+  function concluir(id) {
+    setNotifications(prev => prev.filter(n => n.id !== id));
+  }
+  function marcarTodasComoLidas() {
+    setNotifications(prev => prev.map(n => ({ ...n, lido: true })));
+  }
+  function limparTodas() {
+    setNotifications([]);
+  }
+
+  // fechar ao clicar fora do painel
+  const panelRef = useRef(null);
+  useEffect(() => {
+    function onClickOutside(e) {
+      if (panelRef.current && !panelRef.current.contains(e.target)) closePanel();
+    }
+    if (notifOpen) document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, [notifOpen]);
+
   return (
     <div className="dash-wrap">
       {/* Topbar */}
@@ -55,10 +104,58 @@ export default function Dashboard() {
             <input type="search" placeholder="Buscar pet, tutor, receita..." aria-label="Buscar" />
             <button className="btn btn-ghost" onClick={()=>alert("Buscar...")}>Buscar</button>
           </div>
-          <button className="btn btn-outline" onClick={()=>alert("Notificações")}>Notificações</button>
+
+          {/* 🔔 Sino de notificações */}
+          <button
+            className="notif-bell"
+            title="Notificações"
+            aria-label={`Abrir notificações. ${unreadCount} não lidas.`}
+            onClick={togglePanel}
+          >
+            <span className="bell" aria-hidden>🔔</span>
+            {unreadCount > 0 && <span className="notif-badge" aria-live="polite">{unreadCount}</span>}
+          </button>
+
           <button className="avatar" title="Perfil" onClick={()=>alert("Perfil / Sair")}>
             {user.nome?.slice(0,1)}
           </button>
+
+          {/* Painel dropdown de notificações */}
+          {notifOpen && (
+            <div className="notif-panel" ref={panelRef} role="dialog" aria-label="Notificações">
+              <div className="notif-head">
+                <strong>Notificações</strong>
+                <div className="notif-actions">
+                  <button className="btn btn-ghost btn-small" onClick={marcarTodasComoLidas}>Marcar todas como lidas</button>
+                  <button className="btn btn-outline btn-small" onClick={limparTodas}>Limpar</button>
+                </div>
+              </div>
+
+              {notifications.length === 0 ? (
+                <div className="notif-empty">Sem notificações no momento 🎉</div>
+              ) : (
+                <ul className="notif-list">
+                  {notifications.map(n => (
+                    <li key={n.id} className={`notif-item ${n.lido ? "lido" : ""}`}>
+                      <div className="dot" data-nivel={n.nivel} aria-hidden />
+                      <div className="notif-main">
+                        <div className="notif-title">
+                          {n.titulo}
+                          {!n.lido && <span className="pill new">novo</span>}
+                        </div>
+                        <div className="notif-text">{n.texto}</div>
+                        <div className="notif-meta">Nível: {n.nivel}</div>
+                      </div>
+                      <div className="notif-buttons">
+                        <button className="btn btn-pill btn-small" onClick={()=>marcarComoLida(n.id)}>Marcar lida</button>
+                        <button className="btn btn-small" onClick={()=>concluir(n.id)}>{n.acao || "Concluir"}</button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
         </div>
       </header>
 
