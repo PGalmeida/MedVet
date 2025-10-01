@@ -1,359 +1,66 @@
-/* ======= Estilos Gerais ======= */
 .home-container {
   font-family: 'Poppins', sans-serif;
-  background-color: #f9fafb;
   color: #333;
-  text-align: center;
   overflow-x: hidden;
 }
 
-/* ======= Topbar / Header ======= */
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 24px;
-  background: #fff;
-  border-bottom: 2px solid #ffe2b2;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.brand-logo {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-}
-
-.brand-logo.small {
-  width: 32px;
-  height: 32px;
-}
-
-.brand-name {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #2c3e50;
-}
-
-.topnav a {
-  margin-left: 20px;
-  text-decoration: none;
-  font-weight: 600;
-  color: #444;
-  transition: color 0.2s ease;
-}
-
-.topnav a:hover {
-  color: #ff8c42;
-}
-
-/* ======= Hero / Boas-vindas ======= */
 .hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 3rem 1rem;
-  background: linear-gradient(180deg, #fff, #f0faff);
-  border-bottom: 3px solid #ffe2b2;
-}
-
-.hero-content {
-  max-width: 700px;
-  margin-bottom: 2rem;
+  position: relative;
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(180deg, #f0faff, #fff);
 }
 
 .hero h1 {
   font-size: 2.5rem;
   font-weight: 800;
 }
-
 .hero .highlight {
   color: #ff8c42;
 }
-
 .hero p {
   margin-top: 1rem;
   color: #555;
-  line-height: 1.6;
+  font-size: 1.1rem;
 }
 
-.hero-buttons {
+.about, .services, .plans, .blog {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.services-grid, .plans-grid, .blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
 }
 
-/* Botões principais */
-.btn-primary {
-  background-color: #74c0fc;
-  color: #fff;
-  padding: 0.8rem 1.6rem;
-  border: none;
-  border-radius: 30px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.btn-primary:hover {
-  transform: scale(1.05);
-  background-color: #4dabf7;
-}
-
-.btn-secondary {
-  background-color: #fff;
-  color: #555;
-  border: 2px solid #d0ebff;
-  padding: 0.8rem 1.6rem;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  background-color: #e7f5ff;
-  transform: scale(1.05);
-}
-
-/* ======= Carrossel ======= */
-.carousel {
-  position: relative;
-  width: 90%;
-  max-width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.carousel img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.indicators {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  position: absolute;
-  bottom: 12px;
-  width: 100%;
-}
-
-.indicators span {
-  width: 12px;
-  height: 12px;
-  background: #ddd;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.indicators span.active {
-  background: #ff8c42;
-  transform: scale(1.2);
-}
-
-/* ======= Endereço ======= */
-.endereco {
-  margin: 4rem auto 3rem;
+.card, .plan-card, .blog-card {
   background: #fff;
   padding: 2rem;
-  max-width: 700px;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.endereco h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 1rem;
+.plan-card.highlight {
+  border: 2px solid #ff8c42;
+  transform: scale(1.05);
 }
 
-.endereco p {
-  color: #555;
-  margin-bottom: 1.2rem;
-}
-
-.btn-maps {
-  background-color: #ffb74d;
-  border: none;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.btn-maps:hover {
-  background-color: #ffa726;
-  transform: translateY(-2px);
-}
-
-/* ======= Destaques ======= */
-.destaques {
-  padding: 3rem 1rem;
-  background-color: #f8f9fa;
-}
-
-.destaques h2 {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 2rem;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 1rem;
-  width: 270px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
+.blog-card img {
   width: 100%;
   height: 160px;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.card h4 {
-  margin-top: 1rem;
-  color: #333;
-  font-weight: 700;
-}
-
-.card p {
-  color: #666;
-  font-size: 0.9rem;
-  margin: 0.5rem 0 1rem;
-}
-
-.card button {
-  background-color: #74c0fc;
-  border: none;
-  color: #fff;
-  border-radius: 25px;
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.card button:hover {
-  background-color: #4dabf7;
-  transform: scale(1.05);
-}
-
-.stars {
-  color: #ffb703;
-  font-size: 1.2rem;
-}
-
-/* ======= Rodapé ======= */
 .footer {
-  background: linear-gradient(90deg, #e3f2fd, #fffbe6);
-  padding-top: 2rem;
-  margin-top: 3rem;
-  border-top: 2px solid #ffe2b2;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 1rem 2rem;
-}
-
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.footer-brand .brand-logo {
-  width: 40px;
-  height: 40px;
-}
-
-.footer-content h4 {
-  color: #333;
-  font-size: 1.3rem;
-}
-
-.footer-content h5 {
-  font-size: 1rem;
-  color: #444;
-  margin-bottom: 0.8rem;
-}
-
-.footer-content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-content li {
-  margin: 0.3rem 0;
-  color: #555;
-  cursor: pointer;
-}
-
-.footer-content li:hover {
-  color: #ff8c42;
-}
-
-.socials {
-  display: flex;
-  gap: 0.8rem;
-  justify-content: center;
-}
-
-.socials span {
-  background: #fff;
-  border-radius: 50%;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.socials span:hover {
-  transform: scale(1.1);
-}
-
-.footer-bottom {
-  background: rgba(0, 0, 0, 0.03);
-  padding: 0.8rem;
-  font-size: 0.85rem;
-  color: #555;
-  margin-top: 1rem;
+  background: #f9fafb;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 2rem;
 }
