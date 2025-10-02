@@ -1,36 +1,45 @@
 import React from "react";
-import "./Header.css"; // você pode criar esse CSS ou mover estilos pro Home.css
+import "./Header.css";
 
 export default function Header() {
   return (
     <header className="header">
-      <div className="header-container">
-        {/* Logo */}
-        <div className="logo">
-          <img src="/logo.png" alt="logo" />
-          <span>PetPrime</span>
+      {/* Faixa superior de informações */}
+      <div className="info-bar">
+        <div className="container info-wrap">
+          <div className="info-left">
+            <span className="info-item">
+              📍 Av. Major Nicácio, 2433 — Bairro São José — CEP 14401-135
+            </span>
+          </div>
+          <div className="info-right">
+            <a href="tel:+551637038765" className="info-link">📞 (16) 3703-8765</a>
+          </div>
         </div>
+      </div>
 
-        {/* Menu */}
-        <nav className="nav">
-          <a href="#inicio">Início</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#servicos">Serviços</a>
-          <a href="#planos">Planos</a>
-          <a href="#blog">Blog</a>
-        </nav>
-
-        {/* Botões de ação (exemplo telefone e WhatsApp) */}
-        <div className="actions">
-          <a href="tel:+5516999999999" className="btn-action">📞</a>
-          <a
-            href="https://wa.me/5516999999999"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-action"
-          >
-            💬
+      {/* Barra principal */}
+      <div className="header-bar">
+        <div className="container header-container">
+          {/* Logo (sem texto ao lado) */}
+          <a href="#inicio" className="logo" aria-label="Ir para início">
+            <img src="/logo.png" alt="Logo Dr. Pet" />
           </a>
+
+          {/* Menu central */}
+          <nav className="nav" aria-label="Navegação principal">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#planos">Planos</a>
+            <a href="#blog">Blog</a>
+          </nav>
+
+          {/* Ações rápidas */}
+          
+            <div className="login-area">
+          <a href="/login" className="btn-login">Entrar</a>
+        </div>
         </div>
       </div>
     </header>
