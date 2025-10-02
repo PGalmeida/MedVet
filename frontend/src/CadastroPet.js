@@ -2,29 +2,29 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Funções de Armazenamento (Banco de Dados Local) ---
-    function getPatientsFromStorage() {
-        const storedPatients = localStorage.getItem('vetcare_patients');
-        if (storedPatients) {
-            return JSON.parse(storedPatients);
+    function getPetsFromStorage() {
+        const storedPets = localStorage.getItem('vetcare_pets');
+        if (storedPets) {
+            return JSON.parse(storedPets);
         } else {
             // Se não houver nada, retorna os dados iniciais e salva no storage
-            const initialPatients = [
-                { id: 1, petName: 'Bolinha', species: 'Cachorro', breed: 'Poodle', tutorName: 'Maria Silva', birthDate: '2020-05-10' },
-                { id: 2, petName: 'Frajola', species: 'Gato', breed: 'Siamês', tutorName: 'João Costa', birthDate: '2019-11-22' },
-                { id: 3, petName: 'Rex', species: 'Cachorro', breed: 'Labrador', tutorName: 'Ana Pereira', birthDate: '2022-01-15' },
-                { id: 4, petName: 'Mimi', species: 'Gato', breed: 'Persa', tutorName: 'Carlos Souza', birthDate: '2021-08-30' },
+            const initialPets = [
+                { id: 1, petName: 'Bolinha', species: 'Cachorro', breed: 'Poodle', tutorName: 'Maria Silva', birthDate: '2020-05-10', serviceDate: '2025-10-02' },
+                { id: 2, petName: 'Frajola', species: 'Gato', breed: 'Siamês', tutorName: 'João Costa', birthDate: '2019-11-22', serviceDate: '2025-10-03' },
+                { id: 3, petName: 'Rex', species: 'Cachorro', breed: 'Labrador', tutorName: 'Ana Pereira', birthDate: '2022-01-15', serviceDate: '2025-10-05' },
+                { id: 4, petName: 'Mimi', species: 'Gato', breed: 'Persa', tutorName: 'Carlos Souza', birthDate: '2021-08-30', serviceDate: '2025-10-05' },
             ];
-            savePatientsToStorage(initialPatients);
-            return initialPatients;
+            savePetsToStorage(initialPets);
+            return initialPets;
         }
     }
 
-    function savePatientsToStorage(patientsData) {
-        localStorage.setItem('vetcare_patients', JSON.stringify(patientsData));
+    function savePetsToStorage(petsData) {
+        localStorage.setItem('vetcare_pets', JSON.stringify(petsData));
     }
 
     // --- Estado da Aplicação (Dados) ---
-    let patients = getPatientsFromStorage();
+    let pets = getPetsFromStorage();
 
     // --- Seletores de Elementos do DOM ---
     const navButtons = document.querySelectorAll('.nav-button');
@@ -38,42 +38,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Funções de Renderização ---
 
-    function renderDashboard() {
-        const dashboardPage = document.getElementById('page-dashboard');
-        const totalPatients = patients.length;
-        const scheduledAppointments = 8;
-        const vaccinatedAnimals = 5;
-
-        dashboardPage.innerHTML = `
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="icon-wrapper" style="background-color: #dbeafe; color: #3b82f6;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-7 0V15a5 5 0 0 1 5-5z"/><path d="M6 14.32V16a6 6 0 0 0 12 0v-1.68"/></svg></div>
-                    <div><p class="stat-card-title">Total de Pacientes</p><p class="stat-card-value">${totalPatients}</p></div>
-                </div>
-                <div class="stat-card">
-                    <div class="icon-wrapper" style="background-color: #dcfce7; color: #22c55e;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
-                    <div><p class="stat-card-title">Consultas Agendadas</p><p class="stat-card-value">${scheduledAppointments}</p></div>
-                </div>
-                <div class="stat-card">
-                     <div class="icon-wrapper" style="background-color: #fef9c3; color: #eab308;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
-                    <div><p class="stat-card-title">Animais Vacinados</p><p class="stat-card-value">${vaccinatedAnimals}</p></div>
-                </div>
-            </div>`;
-    }
-
     function renderCadastroForm() {
         const cadastroPage = document.getElementById('page-cadastro');
         cadastroPage.innerHTML = `
             <div class="form-container">
                 <header class="form-header">
-                    <h2>Ficha de Novo Paciente</h2>
+                    <h2>Ficha de Novo Pet</h2>
                     <p>Por favor, preencha todos os campos com atenção.</p>
                 </header>
                 <form id="cadastro-form">
                     <fieldset class="form-fieldset">
                         <legend class="form-legend">Informações do Pet</legend>
-                        <div class="input-group"><div class="form-field"><label for="petName">Nome do Pet</label><input type="text" id="petName" name="petName" required /></div><div class="form-field"><label for="species">Espécie</label><select id="species" name="species" required><option value="" disabled selected>Selecione...</option><option value="Cachorro">Cachorro</option><option value="Gato">Gato</option><option value="Pássaro">Pássaro</option><option value="Roedor">Roedor</option><option value="Outro">Outro</option></select></div></div>
-                        <div class="input-group"><div class="form-field"><label for="breed">Raça</label><input type="text" id="breed" name="breed" required /></div><div class="form-field"><label for="birthDate">Data de Nascimento</label><input type="date" id="birthDate" name="birthDate" required /></div></div>
+                        <div class="input-group">
+                            <div class="form-field"><label for="petName">Nome do Pet</label><input type="text" id="petName" name="petName" required /></div>
+                            <div class="form-field"><label for="species">Espécie</label><select id="species" name="species" required><option value="" disabled selected>Selecione...</option><option value="Cachorro">Cachorro</option><option value="Gato">Gato</option><option value="Pássaro">Pássaro</option><option value="Roedor">Roedor</option><option value="Outro">Outro</option></select></div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-field"><label for="breed">Raça</label><input type="text" id="breed" name="breed" required /></div>
+                            <div class="form-field"><label for="birthDate">Data de Nascimento</label><input type="date" id="birthDate" name="birthDate" required /></div>
+                        </div>
+                         <div class="form-field">
+                            <label for="serviceDate">Data de Atendimento</label>
+                            <input type="date" id="serviceDate" name="serviceDate" required />
+                        </div>
                     </fieldset>
                     <fieldset class="form-fieldset">
                         <legend class="form-legend">Informações do Tutor</legend>
@@ -87,29 +74,36 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('tutorPhone').addEventListener('input', handlePhoneInput);
     }
 
-    function renderPacientes(filter = '') {
-        const pacientesPage = document.getElementById('page-pacientes');
-        const filteredPatients = patients.filter(p => 
+    function renderPets(filter = '') {
+        const petsPage = document.getElementById('page-pets');
+        const filteredPets = pets.filter(p => 
             p.petName.toLowerCase().includes(filter.toLowerCase()) ||
             p.tutorName.toLowerCase().includes(filter.toLowerCase()) ||
             p.breed.toLowerCase().includes(filter.toLowerCase())
         );
 
-        let tableRows = filteredPatients.map(p => `
-            <tr><td>${p.petName}</td><td>${p.species}</td><td>${p.breed}</td><td>${p.tutorName}</td><td>${new Date(p.birthDate).toLocaleDateString('pt-BR', {timeZone: 'UTC'})}</td><td class="table-actions"><button>Ver Detalhes</button></td></tr>`).join('');
+        let tableRows = filteredPets.map(p => `
+            <tr>
+                <td>${p.petName}</td>
+                <td>${p.tutorName}</td>
+                <td>${new Date(p.serviceDate).toLocaleDateString('pt-BR', {timeZone: 'UTC'})}</td>
+                <td>${p.species}</td>
+                <td>${p.breed}</td>
+                <td class="table-actions"><button>Ver Detalhes</button></td>
+            </tr>`).join('');
 
-        pacientesPage.innerHTML = `
+        petsPage.innerHTML = `
             <div class="table-container">
                 <div class="table-header">
-                    <h3>Lista de Pacientes</h3>
-                    <p>Procure e gerencie os pacientes cadastrados.</p>
+                    <h3>Lista de Pets</h3>
+                    <p>Procure e gerencie os pets cadastrados.</p>
                     <form id="search-form" class="search-form">
                         <input type="text" id="search-input" class="search-input" placeholder="Buscar por nome, tutor ou raça..." value="${filter}" />
-                        <button type="submit" class="search-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+                        <button type="submit" class="search-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
                     </form>
                 </div>
-                <div class="table-wrapper"><table class="data-table"><thead><tr><th>Nome do Pet</th><th>Espécie</th><th>Raça</th><th>Tutor</th><th>Data Nasc.</th><th>Ações</th></tr></thead><tbody id="pacientes-tbody">${tableRows}</tbody></table></div>
-                ${filteredPatients.length === 0 ? '<div class="empty-table"><p>Nenhum paciente encontrado.</p></div>' : ''}
+                <div class="table-wrapper"><table class="data-table"><thead><tr><th>Nome do Pet</th><th>Tutor</th><th>Data Atendimento</th><th>Espécie</th><th>Raça</th><th>Ações</th></tr></thead><tbody id="pets-tbody">${tableRows}</tbody></table></div>
+                ${filteredPets.length === 0 ? '<div class="empty-table"><p>Nenhum pet encontrado.</p></div>' : ''}
             </div>`;
         document.getElementById('search-form').addEventListener('submit', handleSearchSubmit);
         document.getElementById('search-input').addEventListener('input', handleSearchInput);
@@ -129,28 +123,27 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleCadastroSubmit(e) {
         e.preventDefault();
         const form = e.target;
-        const newPatient = Object.fromEntries(new FormData(form).entries());
-        newPatient.id = Date.now();
+        const newPet = Object.fromEntries(new FormData(form).entries());
+        newPet.id = Date.now();
         
-        patients.unshift(newPatient);
-        savePatientsToStorage(patients);
+        pets.unshift(newPet);
+        savePetsToStorage(pets);
         
         form.reset();
-        showToast('Paciente cadastrado com sucesso!', 'success');
+        showToast('Pet cadastrado com sucesso!', 'success');
         
-        renderDashboard();
-        renderPacientes();
-        navigateTo('pacientes');
+        renderPets();
+        navigateTo('pets');
     }
     
     function handleSearchSubmit(e) {
         e.preventDefault();
         const searchInput = document.getElementById('search-input');
-        renderPacientes(searchInput.value);
+        renderPets(searchInput.value);
     }
     
     function handleSearchInput(e) {
-        renderPacientes(e.target.value);
+        renderPets(e.target.value);
     }
 
     function handlePhoneInput(e) {
@@ -200,9 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => navigateTo(button.dataset.page));
     });
 
-    renderDashboard();
     renderCadastroForm();
-    renderPacientes();
+    renderPets();
     
-    navigateTo('dashboard');
+    navigateTo('cadastro'); // Inicia na página de cadastro
 });
+
