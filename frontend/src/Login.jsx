@@ -52,13 +52,11 @@ export default function Login() {
           </button>
         </form>
 
-        <div className="mt-4 flex flex-col items-center space-y-2">
-          <button className="text-sm text-salmon hover:underline">
-            Esqueci a senha
-          </button>
-          <button className="text-sm text-gray-600 hover:underline">
-            Não tem cadastro? <span className="text-aqua">Cadastre-se aqui</span>
-          </button>
+          <div className="login-links">
+          <button className="link-button">Esqueci a senha</button>
+          <Link to="/cadastro" className="link-button">
+            Não tem cadastro? Cadastre-se aqui
+          </Link>
         </div>
       </div>
     </div>
