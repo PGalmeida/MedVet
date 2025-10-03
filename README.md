@@ -24,7 +24,7 @@ Este repositório representa a **parte de Front-end**, desenvolvida em React, co
   - **Seções**: Sobre, Serviços, Planos e Blog/Dicas.  
   - **Contato** com links diretos para telefone e WhatsApp.  
 - **Design responsivo** (desktop e mobile).  
-- **Paleta de cores personalizada** baseada em tons verde e bege (🐶🐱 temática veterinária).  
+- **Paleta de cores personalizada** baseada em tons verde e bege.
 - **Blog Cards**: Cards de dicas e novidades estilizados com títulos, datas e botões de ação.  
 - Alterações de estilo (theme) e refatoração de código da Home.  
 
@@ -57,6 +57,6 @@ Esta parte do projeto foi focada no **Front-end (React + CSS)**, com ênfase em:
 ---
 
 ## 📆 Autor(a)
-Projeto desenvolvido por **[Seu Nome]**  
-Disciplina de **[Nome da Disciplina]** – Uni-FACEF  
+Projeto desenvolvido por **Sabrin Costa**  
+Disciplina de **DESENVOLVIMENTO DE SOFTWARE PARA WEB II** – Uni-FACEF  
 Ano: 2025
