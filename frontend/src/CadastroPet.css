@@ -2,13 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    --color-primary: #3b82f6;      /* blue-500 */
-    --color-primary-light: #eff6ff; /* blue-50 */
-    --color-background: #f1f5f9;   /* slate-100 */
-    --color-surface: #ffffff;      /* white */
-    --color-text-primary: #1e293b; /* slate-800 */
-    --color-text-secondary: #64748b;/* slate-500 */
-    --color-border: #e2e8f0;       /* slate-200 */
+    /* Nova paleta de cores (Verde/Cinza) */
+    --color-primary: #10B981;      /* emerald-500 */
+    --color-primary-light: #D1FAE5; /* emerald-100 */
+    --color-background: #F9FAFB;   /* gray-50 */
+    --color-surface: #FFFFFF;      /* white */
+    --color-text-primary: #1F2937; /* gray-800 */
+    --color-text-secondary: #6B7281;/* gray-500 */
+    --color-border: #E5E7EB;       /* gray-200 */
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
@@ -237,7 +238,7 @@ button {
     font-size: 1.125rem;
     transition: background-color 0.2s;
 }
-.submit-button:hover { background-color: #2563eb; /* blue-600 */ }
+.submit-button:hover { background-color: #059669; /* emerald-600 */ }
 
 /* --- Estilos da Tabela --- */
 .table-container {
@@ -285,7 +286,7 @@ button {
     border-bottom-right-radius: 0.5rem;
     transition: background-color 0.2s;
 }
-.search-button:hover { background-color: #2563eb; }
+.search-button:hover { background-color: #059669; }
 .search-button svg { width: 1.25rem; height: 1.25rem; }
 
 .table-wrapper { overflow-x: auto; }
