@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import "./Dashboard.css";
+import React, { useState, useMemo, useEffect, useRef } from "react";
+import "./Dashboard.css"; // estilos
 
 export default function Dashboard() {
   // --- Mock de dados (troque por sua API depois) ---
-  const [user] = useState({ nome: "Dra. Ana", clinica: "Clínica MedVet" });
+  const [user] = useState({ nome: "Dra. Sarah", clinica: "Clínica Dr Pet" });
 
   const [pets] = useState([
     { id: 1, nome: "Toby", especie: "Cão", porte: "Médio", castrado: true, alerta: "Vermífugo em 7 dias" },
@@ -92,7 +92,14 @@ export default function Dashboard() {
       {/* Topbar */}
       <header className="dash-topbar" role="navigation" aria-label="Barra superior">
         <div className="brand">
-          <div className="logo-mark" aria-hidden>MV</div>
+          {/* ↓ Substituí o avatar “MV” pela logo em /public */}
+          <img
+            src="/logo-medvet.png"
+            alt="Clínica MedVet"
+            className="logo-medvet"
+            width={40}
+            height={40}
+          />
           <div className="brand-meta">
             <strong>{user.clinica}</strong>
             <span>Bem-vinda, {user.nome}</span>

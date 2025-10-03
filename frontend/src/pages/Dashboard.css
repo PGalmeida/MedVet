@@ -24,11 +24,15 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;color:#0b1220;backgroun
 }
 
 .brand{display:flex;align-items:center;gap:12px}
-.logo-mark{
-  width:40px;height:40px;border-radius:10px;
-  background:linear-gradient(135deg,var(--primary),#3f6f3d);
-  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;
+
+/* ✅ Logo no lugar do “MV” */
+.logo-medvet{
+  width:40px;height:40px;
+  object-fit:contain;
+  border-radius:10px;     /* deixe 0 se não quiser cantos */
+  display:inline-block;
 }
+
 .brand-meta{display:flex;flex-direction:column;line-height:1.1}
 .brand-meta strong{font-size:14px}
 .brand-meta span{font-size:12px;color:var(--muted)}
@@ -194,13 +198,14 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;color:#0b1220;backgroun
 .notif-main{flex:1}
 .notif-title{font-weight:800; display:flex; align-items:center; gap:8px}
 .notif-text{margin-top:4px}
-.notif-meta{font-size:12px; color:var(--muted); margin-top:4px}
+.notif-meta{font-size:12px; color:#0b1220; opacity:.7; margin-top:4px}
 .notif-buttons{display:flex; gap:8px; align-items:center}
 
 .pill.new{
   font-size:11px; padding:4px 8px; border-radius:999px;
   border:1px solid var(--border); background:#F0F7E6
 }
+
 /* === KPIs em VERDE ESCURO (padrão) === */
 .kpi-grid .card{
   background: var(--primary);   /* #60935D */
@@ -210,18 +215,13 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;color:#0b1220;backgroun
 .kpi-grid .kpi-title,
 .kpi-grid .kpi-sub{ color: #F0F7E6; }  /* subtítulos legíveis */
 .kpi-grid .kpi-value{ color: #ffffff; } /* valor em branco */
+
 /* 🎨 Pet-cards em verde claro */
 .pet-card {
   background: #C8E9A0;           /* verde claro da paleta */
   border: 1px solid #B7D98F;     /* borda um pouco mais escura */
 }
-
 .pet-title,
-.pet-sub {
-  color: #0b1220; /* mantém o texto legível */
-}
+.pet-sub { color: #0b1220; }
 
-.pet-avatar {
-  background: var(--primary);    /* continua verde escuro no avatar */
-}
-
+.pet-avatar { background: var(--primary); }
