@@ -46,7 +46,7 @@ export default function Cadastro() {
       </form>
 
       <div className="links">
-        <Link to="/" className="link-button">
+        <Link to="/Login" className="link-button">
           Já tem conta? Entrar
         </Link>
       </div>
