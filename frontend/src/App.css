@@ -1,38 +1,84 @@
-.App {
+/* Reset básico */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #C8E9A0, #60935D);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container centralizado */
+.container {
+  background: #F6BE9A;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+  width: 350px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Títulos */
+.container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Formulário */
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Inputs */
+input {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #60935D;
+  outline: none;
+  font-size: 1rem;
+}
+
+input:focus {
+  border-color: #C8E9A0;
+  box-shadow: 0px 0px 5px rgba(200, 233, 160, 0.8);
+}
+
+/* Botão principal */
+button {
+  padding: 0.8rem;
+  background: #60935D;
   color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background: #333;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Links extras */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #60935D;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.link-button:hover {
+  color: #333;
 }
