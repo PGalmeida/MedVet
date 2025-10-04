@@ -48,17 +48,13 @@ O projeto foi criado com foco em **design limpo**, **cores suaves** e **componen
 
 ## 🩺 Futuras melhorias
 
-📊 Painel de gestão com filtros e gráficos mensais
-🌗 Modo escuro / claro
-🧾 Exportar prontuário em PDF
-📆 Integração com calendário e WhatsApp
+- 📊 Painel de gestão com filtros e gráficos mensais
+- 🌗 Modo escuro / claro
+- 🧾 Exportar prontuário em PDF
+- 📆 Integração com calendário e WhatsApp
 
 -- 
 
 ## 👩‍⚕️ Autoria
 
-Projeto desenvolvido por Sarah Silva
-💚 Aplicação criada com foco em cuidado, tecnologia e amor pelos pets.
-- Campo de busca funcional (mockado).  
-- Sistema de notificações com badge dinâmica e painel suspenso.  
-- Persistência das notificações no `localStorage`.
+- Projeto desenvolvido por Sarah Silva
