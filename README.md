@@ -1,4 +1,4 @@
-<img width="345" height="148" alt="image" src="https://github.com/user-attachments/assets/3aab9b6a-9268-4314-8646-796efba0e282" /># 🐾 Clínica Dr. Pet — Painel Veterinário
+## 🐾 Clínica Dr. Pet — Painel Veterinário
 
 Aplicação web desenvolvida em **React.js** para gestão de clínicas veterinárias, com foco em **usabilidade**, **organização visual** e **acessibilidade**.  
 O sistema permite visualizar agendamentos, lembretes, pets cadastrados e notificações inteligentes — tudo em um painel unificado e moderno.
