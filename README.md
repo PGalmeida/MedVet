@@ -38,7 +38,6 @@ O projeto foi criado com foco em **design limpo**, **cores suaves** e **componen
 - Sistema de notificações com badge dinâmica e painel suspenso.  
 - Persistência das notificações no `localStorage`.
 
---
 
 ## 🔗 Integração com o projeto em grupo
 
