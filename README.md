@@ -36,7 +36,6 @@ O projeto foi criado com foco em **design limpo**, **cores suaves** e **componen
 - Sistema de notificações com badge dinâmica e painel suspenso.  
 - Persistência das notificações no `localStorage`.
 
---
 
 ## 🩺 Futuras melhorias
 
@@ -45,7 +44,6 @@ O projeto foi criado com foco em **design limpo**, **cores suaves** e **componen
 - 🧾 Exportar prontuário em PDF
 - 📆 Integração com calendário e WhatsApp
 
--- 
 
 ## 👩‍⚕️ Autoria
 
