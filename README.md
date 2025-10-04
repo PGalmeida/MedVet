@@ -44,14 +44,19 @@ O projeto foi criado com foco em **design limpo**, **cores suaves** e **componen
 /public
 └── logo-medvet.png # Logo exibida na topbar
 
-##🩺 Futuras melhorias
+-- 
+
+## 🩺 Futuras melhorias
 
 📊 Painel de gestão com filtros e gráficos mensais
 🌗 Modo escuro / claro
 🧾 Exportar prontuário em PDF
 📆 Integração com calendário e WhatsApp
 
-##👩‍⚕️ Autoria
+-- 
+
+## 👩‍⚕️ Autoria
+
 Projeto desenvolvido por Sarah Silva
 💚 Aplicação criada com foco em cuidado, tecnologia e amor pelos pets.
 - Campo de busca funcional (mockado).  
