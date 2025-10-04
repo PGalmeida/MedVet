@@ -38,7 +38,6 @@ O projeto foi criado com foco em **design limpo**, **cores suaves** e **componen
   
 ## ⚙️ Estrutura principal
 
-```bash
 /front-end
 │
 ├── Dashboard.jsx      # Componente principal
