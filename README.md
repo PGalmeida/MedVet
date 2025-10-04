@@ -38,12 +38,14 @@ O projeto foi criado com foco em **design limpo**, **cores suaves** e **componen
   
 ## ⚙️ Estrutura principal
 
+```bash
 /front-end
-├── Dashboard.jsx # Componente principal
-├── Dashboard.css # Estilos globais
-/public
-└── logo-medvet.png # Logo exibida na topbar
-
+│
+├── Dashboard.jsx      # Componente principal
+├── Dashboard.css      # Estilos globais
+│
+└── /public
+    └── logo-medvet.png  # Logo exibida na topbar
 -- 
 
 ## 🩺 Futuras melhorias
